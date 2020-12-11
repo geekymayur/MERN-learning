@@ -3,8 +3,12 @@
 // that provides you with a simple API to build websites, web apps and back ends.
 
 const express = require('express');
-
 const app = express();
+const path = require("path");
+const staticpath = path.join(__dirname, '../public');
+
+//builtin middleware
+app.use(express.static(staticpath));
 
 app.get("/", (req, res) => {
     res.send("Welcome to home page");
@@ -14,8 +18,6 @@ app.get("/mayur", (req, res) => {
     res.send("Hello Here is Mayur");
 });
 
-
-
 app.listen("5555", () => {
     console.log("App is running in port 5555");
-})
+});
